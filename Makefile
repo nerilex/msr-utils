@@ -1,7 +1,8 @@
 PREFIX = /usr
 
+USBLDFLAGS = `pkg-config --libs libusb-1.0`
 CFLAGS = -Wall -g -std=c99 -pedantic -D_POSIX_C_SOURCE=200809L
-LDFLAGS = -lmsr
+LDFLAGS = -lmsr $(USBLDFLAGS)
 
 MSRDUMP = msr-dump
 MSRDUMPOBJS = msr-dump.o
