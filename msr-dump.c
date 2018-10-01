@@ -96,7 +96,7 @@ void dump(void)
 	int msr_fd = -1;
 	msr_tracks_t tracks = {0};
 
-	if (msr_serial_open(device, &msr_fd, MSR_BLOCKING, MSR_BAUD) != 0) {
+	if (msr_io_open(device, &msr_fd, MSR_BLOCKING, MSR_BAUD) != 0) {
 		FATAL("Serial open of '%s' failed.", device);
 	}
 
@@ -136,6 +136,6 @@ void dump(void)
 		msr_pretty_output_string(output, tracks);
 	}
 
-	msr_serial_close(msr_fd);
+	msr_io_close(msr_fd);
 
 }

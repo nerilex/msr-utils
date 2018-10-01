@@ -74,7 +74,7 @@ void clone()
 	int msr_fd = -1;
 	msr_tracks_t tracks = {0};
 
-	if (msr_serial_open(device, &msr_fd, MSR_BLOCKING, MSR_BAUD) != 0) {
+	if (msr_io_open(device, &msr_fd, MSR_BLOCKING, MSR_BAUD) != 0) {
 		FATAL("Serial open of '%s' failed.", device);
 	}
 
@@ -109,5 +109,5 @@ void clone()
 		msr_iso_write(msr_fd, &tracks);
 	}
 
-	msr_serial_close(msr_fd);
+	msr_io_close(msr_fd);
 }
